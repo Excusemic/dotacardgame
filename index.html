@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOTA MEMORY GAME</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="favi/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favi/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favi/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favi/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favi/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favi/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favi/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favi/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favi/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favi/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favi/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favi/favicon-16x16.png">
+    <link rel="manifest" href="favi/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favi/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div class="notification">
+        <div class="notification-content">
+            <p>If you change difficulty now, your progress will be lost</p>
+            <button class="proceed">Change</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+    <div class="notificationPlayAgain">
+        <div class="notificationPlayAgain-content">
+            <p class="congrats"></p>
+            <p>Play again?</p>
+            <button class="proceedAgain">Play!</button>
+            <button class="cancelAgain">No</button>
+        </div>
+    </div>
+    <div class="overlay">
+
+    </div>
+
+    <div class="main-container">
+        <div class="leaderboard-container">
+            <div class="leaderboard-content">
+                <div class="back">
+                    <img src="img/back.png" alt="back">
+                    <h6>back</h6>
+                </div>
+                <div class="back backBoard">
+                    <img src="img/back.png" alt="back">
+                    <h6>back</h6>
+                </div>
+                <div class="table-diff">
+                    <div class="noob">Noob</div>
+                    <div class="newbie">Newbie</div>
+                    <div class="pro">Pro</div>
+                    <div class="legend">Legend</div>
+                </div>
+                <table>
+                </table>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="info">
+                    <a href="https://dota2.gamepedia.com/Category:Hero_lore" class="lore">Lore</a>
+                    <h6 class="leaderboard">Leaderboards</h6>
+                </div>
+                <h3>DOTA</h3>
+                <p>Memory game</p>
+            </div>
+            <div class="start-game">
+                <form action="">
+                    <input type="text" name="" id="inputName" placeholder="Enter your username">
+                    <p class="warning">Choose username and press enter! </p>
+                    <br>
+                    <div class="radio-inputs">
+                        <div>
+                            <input type="radio" name="level" value="easy" checked><span class="noob" style="color: #b0c3d9">Noob</span>    
+                        </div>
+                        <div>
+                            <input type="radio" name="level" value="medium"><span class="noob" style="color: #4b69ff">Newbie</span>  
+                        </div> 
+                        <div>
+                            <input type="radio" name="level" value="hard"><span class="noob" style="color: #8847ff">Pro</span>   
+                        </div>
+                        <div>
+                            <input type="radio" name="level" value="expert"><span class="noob" style="color: #fff34f">Legend</span>   
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> 
+        <div class="board-content">
+            <div class="radio-inputs">
+                <div>
+                    <input type="radio" name="levelBoard"  value="easy"><span class="noob">Noob</span>    
+                </div>
+                <div>
+                    <input type="radio" name="levelBoard"  value="medium"><span class="noob">Newbie</span>  
+                </div> 
+                <div>
+                    <input type="radio" name="levelBoard"  value="hard"><span class="noob">Pro</span>   
+                </div>
+                <div>
+                    <input type="radio" name="levelBoard"  value="expert"><span class="noob">Legend</span>   
+                </div>
+                <input type="submit" value="Change difficulty" class="changeDif">
+            </div>
+
+            <div class="game-info">
+                    <p class="currentPlayer"></p>
+                    <p class="playingAs">playing as <span id="diff">asdasd</span></p>
+                <p class="timer">0</p>
+            </div>
+            <div class="board">
+                <div class="card" value="abbadon">
+                    <img  src="img/cards/abbadon.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="abbadon">
+                    <img src="img/cards/abbadon.png" alt="" class="card-front" >
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bane">
+                    <img src="img/cards/bane.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bane">
+                    <img src="img/cards/bane.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bloodseeker">
+                    <img src="img/cards/bloodseeker.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bloodseeker"> 
+                    <img src="img/cards/bloodseeker.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card"  value="boneflecher">
+                    <img src="img/cards/boneflecher.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card"  value="boneflecher">
+                    <img src="img/cards/boneflecher.png" alt="" class="card-front">
+                    <img src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bountyhunter">
+                    <img  src="img/cards/bountyhunter.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="bountyhunter">
+                    <img  src="img/cards/bountyhunter.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="chaosknight">
+                    <img  src="img/cards/chaosknight.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="chaosknight">
+                    <img  src="img/cards/chaosknight.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="disruptor">
+                    <img  src="img/cards/disruptor.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="disruptor">
+                    <img  src="img/cards/disruptor.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="dragonknight">
+                    <img  src="img/cards/dragonknight.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="dragonknight">
+                    <img  src="img/cards/dragonknight.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="drowranger">
+                    <img  src="img/cards/drowranger.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="drowranger">
+                    <img  src="img/cards/drowranger.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="earthspirit">
+                    <img  src="img/cards/earthspirit.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="earthspirit">
+                    <img  src="img/cards/earthspirit.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="eldertitan">
+                    <img  src="img/cards/eldertitan.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="eldertitan">
+                    <img  src="img/cards/eldertitan.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ember">
+                    <img  src="img/cards/ember.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ember">
+                    <img  src="img/cards/ember.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="enigma">
+                    <img  src="img/cards/enigma.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="enigma">
+                    <img  src="img/cards/enigma.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="huskar">
+                    <img  src="img/cards/huskar.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="huskar">
+                    <img  src="img/cards/huskar.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="invoker">
+                    <img  src="img/cards/invoker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="invoker">
+                    <img  src="img/cards/invoker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="juggernaut">
+                    <img  src="img/cards/juggernaut.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="juggernaut">
+                    <img  src="img/cards/juggernaut.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="kunkka">
+                    <img  src="img/cards/kunkka.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="kunkka">
+                    <img  src="img/cards/kunkka.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="leshrac">
+                    <img  src="img/cards/leshrac.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="leshrac">
+                    <img  src="img/cards/leshrac.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lich">
+                    <img  src="img/cards/lich.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lich">
+                    <img  src="img/cards/lich.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lion">
+                    <img  src="img/cards/lion.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lion">
+                    <img  src="img/cards/lion.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lycan">
+                    <img  src="img/cards/lycan.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="lycan">
+                    <img  src="img/cards/lycan.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="medusa">
+                    <img  src="img/cards/medusa.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="medusa">
+                    <img  src="img/cards/medusa.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="meppo">
+                    <img  src="img/cards/meppo.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="meppo">
+                    <img  src="img/cards/meppo.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="monkeyking">
+                    <img  src="img/cards/monkeyking.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="monkeyking">
+                    <img  src="img/cards/monkeyking.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="morphling">
+                    <img  src="img/cards/morphling.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="morphling">
+                    <img  src="img/cards/morphling.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="nevermore">
+                    <img  src="img/cards/nevermore.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="nevermore">
+                    <img  src="img/cards/nevermore.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="nightstalker">
+                    <img  src="img/cards/nightstalker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="nightstalker">
+                    <img  src="img/cards/nightstalker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="OD">
+                    <img  src="img/cards/OD.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="OD">
+                    <img  src="img/cards/OD.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ogre">
+                    <img  src="img/cards/ogre.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ogre">
+                    <img  src="img/cards/ogre.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="phantomassasin">
+                    <img  src="img/cards/phantomassasin.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="phantomassasin">
+                    <img  src="img/cards/phantomassasin.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="phantomlancer">
+                    <img  src="img/cards/phantomlancer.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="phantomlancer">
+                    <img  src="img/cards/phantomlancer.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="pudge">
+                    <img  src="img/cards/pudge.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="pudge">
+                    <img  src="img/cards/pudge.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="pugna">
+                    <img  src="img/cards/pugna.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="pugna">
+                    <img  src="img/cards/pugna.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="razor">
+                    <img  src="img/cards/razor.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="razor">
+                    <img  src="img/cards/razor.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="riki">
+                    <img  src="img/cards/riki.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="riki">
+                    <img  src="img/cards/riki.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="rubick">
+                    <img  src="img/cards/rubick.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="rubick">
+                    <img  src="img/cards/rubick.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="slardar">
+                    <img  src="img/cards/slardar.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="slardar">
+                    <img  src="img/cards/slardar.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="slark">
+                    <img  src="img/cards/slark.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="slark">
+                    <img  src="img/cards/slark.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="sniper">
+                    <img  src="img/cards/sniper.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="sniper">
+                    <img  src="img/cards/sniper.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="spectre">
+                    <img  src="img/cards/spectre.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="spectre">
+                    <img  src="img/cards/spectre.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="spiritbreaker">
+                    <img  src="img/cards/spiritbreaker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="spiritbreaker">
+                    <img  src="img/cards/spiritbreaker.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="sven">
+                    <img  src="img/cards/sven.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="sven">
+                    <img  src="img/cards/sven.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="tiny">
+                    <img  src="img/cards/tiny.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="tiny">
+                    <img  src="img/cards/tiny.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="troll">
+                    <img  src="img/cards/troll.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="troll">
+                    <img  src="img/cards/troll.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="undying">
+                    <img  src="img/cards/undying.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="undying">
+                    <img  src="img/cards/undying.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ursa">
+                    <img  src="img/cards/ursa.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="ursa">
+                    <img  src="img/cards/ursa.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="void">
+                    <img  src="img/cards/void.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="void">
+                    <img  src="img/cards/void.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="warlock">
+                    <img  src="img/cards/warlock.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="warlock">
+                    <img  src="img/cards/warlock.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="windranger">
+                    <img  src="img/cards/windranger.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="windranger">
+                    <img  src="img/cards/windranger.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="zeus">
+                    <img  src="img/cards/zeus.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                <div class="card" value="zeus">
+                    <img  src="img/cards/zeus.png" alt="" class="card-front" >
+                    <img  src="img/cards/cardback.jpg" alt="" class="card-back">
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <audio id="background_audio" controls loop>
+        <source src="sounds/theme.mp3" type="audio/mp3" />
+    </audio> 
+    <audio src="sounds/horn.mp3" id="horn"></audio>
+    <audio src="sounds/abbadonvoice.mp3" id="abbadonvoice"></audio>
+    <audio src="sounds/banevoice.mp3" id="banevoice"></audio>
+    <audio src="sounds/bhvoice.mp3" id="bhvoice"></audio>
+    <audio src="sounds/bsvoice.mp3" id="bsvoice"></audio>
+    <audio src="sounds/ckvoice.mp3" id="ckvoice"></audio>
+    <audio src="sounds/clinkzvoice.mp3" id="clinkzvoice"></audio>
+    <audio src="sounds/disruptorvoice.mp3" id="disruptorvoice"></audio>
+    <audio src="sounds/dragonvoice.mp3" id="dragonvoice"></audio>
+    <audio src="sounds/drvoice.mp3" id="drvoice"></audio>
+    <audio src="sounds/earthspiritvoice.mp3" id="earthspiritvoice"></audio>
+    <audio src="sounds/emberspiritvoice.mp3" id="emberspiritvoice"></audio>
+    <audio src="sounds/enigmavoice.mp3" id="enigmavoice"></audio>
+    <audio src="sounds/huskarvoice.mp3" id="huskarvoice"></audio>
+    <audio src="sounds/invokervoice.mp3" id="invokervoice"></audio>
+    <audio src="sounds/juggernautvoice.mp3" id="juggernautvoice"></audio>
+    <audio src="sounds/kunkkavoice.mp3" id="kunkkavoice"></audio>
+    <audio src="sounds/leshrackvoice.mp3" id="leshrackvoice"></audio>
+    <audio src="sounds/lichvoice.mp3" id="lichvoice"></audio>
+    <audio src="sounds/lionvoice.mp3" id="lionvoice"></audio>
+    <audio src="sounds/medusavoice.mp3" id="medusavoice"></audio>
+    <audio src="sounds/voidvoice.mp3" id="voidvoice"></audio>
+    <div class="leaderboard-click"><p>LEADERBOARD</p></div>
+    <script src="script.js"></script>
+</body>
+</html>
